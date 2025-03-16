@@ -26,7 +26,7 @@ async function promptUser() {
 
     switch (answers.action) {
         case 'View all employees':
-            const query = `SELECT * FROM employee`;
+            const query = `SELECT first_name, last_name, role.title, manager_id FROM employee join role on employee.role_id = role.id`;
             const { rows } = await pool.query(query);
             console.table(rows);
             break;
